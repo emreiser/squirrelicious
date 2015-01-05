@@ -1,0 +1,17 @@
+<div id="content"></div>
+<div class="center">
+  <%= image_tag "ajax-loader.gif", class: "ajax-spinner", title: "Loading..." %>
+</div>
+
+<script type="text/javascript">
+  $("#ajaxSpinnerImage").hide();
+
+  $(document).ajaxStart(function(){
+    $("#ajaxSpinnerImage").show();
+    console.log("show");
+  }).ajaxStop(function(){
+    $("#ajaxSpinnerImage").hide();
+  });
+
+  Squirrelicious.requestRecipes();
+</script>

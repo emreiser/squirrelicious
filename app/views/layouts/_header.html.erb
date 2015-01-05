@@ -1,0 +1,71 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to root_url, class: 'navbar-brand site-title' do %> 
+        <%= image_tag("logo.png") %> Squirrelicious
+      <% end %>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Recipes", search_path %></li>
+          <li><%= link_to "Gear", gear_path %></li>
+          <li><%= link_to "About", about_path %></li>
+          <% if user_signed_in? %>
+            <li><a href="" id="view_saved_recipes">Favorites</a></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, id: 'sign-out' %></li>
+          <% else %>
+            <li><%= link_to "Sign in", new_user_session_path %></li>
+          <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<script>
+  $('#view_saved_recipes').click(function(event) {
+      event.preventDefault();
+      var $content = $('#content'),
+          $container = $('<div class="container">'),
+          $inner_content = $('<div class="col-sm-8">'),
+          $header = $('<div class="page-header"><h1>Saved Recipes</h1></div>'),
+          $table = $('<table class="table">'),
+          $table_body = $('<tbody class="table-body">'),
+          $flash = $('.flash');
+
+      $content.text("");
+      $inner_content.append($header);
+      $table.append($table_body);
+      $inner_content.append($table);
+      $container.append($inner_content);
+      $content.append($container);
+      $flash.text("");
+
+      Squirrelicious.get_favorites(function(data) {
+        $.each(data, function(index, value) {
+          var $row = $('<tr>'),
+            $td = $('<td>'),
+            $table = $('.table-body');
+          $td.append('<p class="link"><a href="" id="' + value.yummlyid + '">' + value.title + '</a></p>');
+          $td.click(function(event) {
+            event.preventDefault();
+            Squirrelicious.render_recipe_show_info(value);
+            return false;
+          })
+          $row.append($td);
+          $table.append($row);
+          Squirrelicious.squirrelify();
+        })
+      });
+      return false;
+  });
+</script>

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 recipe-show" id="recipe_{{id}}">
+      <div class="page-header">
+        <img class="recipe-show-img" src="{{imageurl}}"><br>
+        <h1 class="recipe-title">{{title}}</h1>
+      </div>
+      <h2>Ingredients</h2>
+      <table class="table">
+        <tbody>
+          {{#each ingredients}}
+            <tr>
+              <td><p class="lead">{{this}}</p></td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-3 col-sm-offset-1 recipe-side-bar" id="recipe_side_bar{{id}}">
+      <div class="page-header side-bar-header">
+        <button class="back-to-recipes btn btn-go btn-block">Back to recipes</button>
+      </div>
+      <button class="favorite-button btn btn-custom btn-block">Add favorite</button>
+      <a class="btn btn-block btn-custom margin-bottom" target="_blank" id="recipe_url_{{id}}" href="http://www.yummly.com/recipe/external/{{yummlyid}}">View Recipe</a>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(".back-to-recipes").on("click", function(){
+    Squirrelicious.requestRecipes(event, Squirrelicious.meat);
+  })
+</script>
