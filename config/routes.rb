@@ -5,6 +5,7 @@ Squirrelicious::Application.routes.draw do
 
   resources :recipes, only: [:index, :create, :show]
   post '/recipes/:id', to: 'recipes#favorite', as: 'favorite_recipe'
+  get '/dashboard', to: 'home#dashboard', as: 'dashboard'
   get '/gear', to: 'home#gear', as: 'gear'
   get '/about', to: 'home#about', as: 'about'
   get '/search', to: 'recipes#search', as: 'search'

@@ -1,0 +1,28 @@
+<% content_for :head do %>
+  <meta property="og:image" content="<%= image_url('squirrelicious.jpg') %>"/>
+<% end %>
+
+<div id="content">
+  <div class="img-bg community">
+    <div class="bg-strip">
+      <h1 class="site-title">Squirrelicious</h1>
+      <h3 class="tag-line">Building community<br>through new urban traditions.</h3>
+      <div class="action">
+        <h2 class="inline craving">I'm craving </h2>
+        <input type="text" id="craving">
+        <%= link_to search_path do %>
+          <div class="btn btn-go"></span> Go</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="footer">
+  <div class="center">
+    A project of <a href="https://github.com/open-eie/open-src" target="blank">SRC</a> | Squirrelicious on <a href="https://github.com/emreiser/squirrelicious" target="blank">GitHub</a>.
+  </div>
+</div> -->
+
+<script>
+  Squirrelicious.typeCravings();
+</script>

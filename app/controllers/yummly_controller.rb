@@ -1,13 +1,13 @@
 class YummlyController < ApplicationController
   def index
-    api_id = ENV["YUMMLY_APP_ID"]
-    api_key = ENV["YUMMLY_APP_KEY"]
+    app_id = ENV["EDAMAM_APP_ID"]
+    app_key = ENV["EDAMAM_API_KEY"]
     ingredients = params[:ingredients]
     ingredients.gsub!(' ', '+')
 
-    yummly_url = "http://api.yummly.com/v1/api/recipes?_app_id=#{api_id}&_app_key=#{api_key}&q=#{ingredients}"
+    edamam_url = "https://api.edamam.com/search?q=#{ingredients}&app_id=#{app_id}&app_key=#{app_key}"
 
-    @response = HTTParty.get(yummly_url)
+    @response = HTTParty.get(edamam_url)
 
     render json: @response
   end
