@@ -38,6 +38,8 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (6.0.4)
+    autoprefixer-rails (10.2.4.0)
+      execjs
     bcrypt (3.1.16)
     better_errors (2.9.1)
       coderay (>= 1.0.0)
@@ -45,8 +47,9 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.1.1.1)
-      sass (~> 3.2)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     builder (3.2.4)
     capybara (3.35.3)
       addressable
@@ -92,6 +95,7 @@ GEM
       railties (>= 3.0.0)
     faker (2.2.1)
       i18n (>= 0.8)
+    ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     handlebars_assets (0.23.8)
@@ -183,6 +187,8 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     sdoc (2.0.4)
       rdoc (>= 5.0)
     shoulda-matchers (4.5.1)
@@ -226,7 +232,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 3.1.0)
+  bootstrap-sass (~> 3.4.1)
   capybara
   coffee-rails (~> 4.0.0)
   coffee-rails-source-maps
