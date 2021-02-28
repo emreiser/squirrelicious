@@ -28,7 +28,7 @@ Squirrelicious.requestRecipes = function(event, meat) {
     data: {ingredients: meat }
   })
   .done(function(data) {
-    Squirrelicious.renderAllRecipes(data.matches, meat);
+    Squirrelicious.renderAllRecipes(data.hits, meat);
   });
 };
 
@@ -61,7 +61,8 @@ Squirrelicious.renderAllRecipes = function(recipes, meat) {
     } else {
       var l = recipes.length, i = 0;
       for(; i < l; i++) {
-        Squirrelicious.renderRecipe(recipes[i], $recipe_container, favorite_array);
+        recipes[i].recipe.id = recipes[i].recipe.uri.split("_")[1];
+        Squirrelicious.renderRecipe(recipes[i].recipe, $recipe_container, favorite_array);
       }
     }
   });
@@ -70,11 +71,11 @@ Squirrelicious.renderAllRecipes = function(recipes, meat) {
 // renders the div for display on the index page
 Squirrelicious.renderRecipe = function(recipe, container, favorite_array) {
   var regEx = new RegExp(Squirrelicious.meat, "ig");
-  var newName = recipe.recipeName.replace(regEx, "Squirrel");
+  var newName = recipe.label.replace(regEx, "Squirrel");
 
-  var recipe_image = recipe.smallImageUrls[0] || '/recipeme.png',
-    $recipe_div = $('<div class="col-sm-4 recipe thumbnail">'),
-    $recipe_content = $('<div class="recipe-content dark-boxy" id="recipe' + recipe.id + '">'),
+  var recipe_image = recipe.image || '/recipeme.png',
+    $recipe_div = $('<div class="col-sm-4 recipe thumbnail" id="recipe' + recipe.id + '">'),
+    $recipe_content = $('<div class="recipe-content dark-boxy">'),
     $recipe_content_inner_title = $('<div class="col-sm-10">'),
     $recipe_content_inner_favorite = $('<div class="col-sm-2">'),
     $recipe_title = $("<a class='recipe_title'>" + newName + "</h3>"),
@@ -109,14 +110,14 @@ Squirrelicious.renderRecipe = function(recipe, container, favorite_array) {
   });
 };
 
-Squirrelicious.renderAttribution = function() {
-  var $yummly_attribution = $('<div id="yummly-att">'),
-      $yummly_attribution_content = $('<small id="yummly-att-content"> Recipe search powered by <a href="http://www.yummly.com/recipes"><img alt="Yummly" src="http://static.yummly.com/api-logo.png"/></a></small>'),
-      $container = $('.container');
+// Squirrelicious.renderAttribution = function() {
+//   var $yummly_attribution = $('<div id="yummly-att">'),
+//       $yummly_attribution_content = $('<small id="yummly-att-content"> Recipe search powered by <a href="http://www.yummly.com/recipes"><img alt="Yummly" src="http://static.yummly.com/api-logo.png"/></a></small>'),
+//       $container = $('.container');
 
-  $yummly_attribution.append($yummly_attribution_content);
-  return $yummly_attribution;
-};
+//   $yummly_attribution.append($yummly_attribution_content);
+//   return $yummly_attribution;
+// };
 
 
 

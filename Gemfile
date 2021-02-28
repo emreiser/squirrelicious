@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby "2.1.5"
+ruby "2.5.7"
 
-gem 'rails', '4.0.3'
-gem 'pg'
+gem 'rails', '4.2.8'
+gem 'pg', '~> 0.21.0'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -11,7 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'devise'
-gem 'httparty'
+gem 'httparty', '~> 0.15.7'
 gem 'handlebars_assets'
 
 group :doc do
@@ -26,9 +26,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'database_cleaner'
-  gem 'guard-rspec', require: false
   gem 'dotenv-rails'
 end
 

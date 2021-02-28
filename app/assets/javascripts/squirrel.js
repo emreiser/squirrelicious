@@ -1,6 +1,6 @@
 var Squirrelicious = Squirrelicious || {};
 
-Squirrelicious.allMeats = ["Pork", "Tofu", "Salmon", "Steak", "Beef", "Chicken"];
+Squirrelicious.allMeats = ["Pork", "Tofu", "Salmon", "Steak", "Beef", "Chicken", "Haddock", "Tilapia"];
 
 Squirrelicious.squirrelify = function(meat){
   var meat = meat || Squirrelicious.allMeats.join('|');

@@ -8,15 +8,19 @@
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" type="image/png" href="<%= asset_path("favicon.png")%>">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:site_name" content="Squirrelicious"/>
     <meta property="og:description" content="Delectable urban squirrel recipes for any occasion"/>
+
+    <script src="/typed.js"></script>
+
   </head>
   <body>
     <%= render "layouts/header" %>
 
     <div id="content">
-    <%= yield %>
+      <%= yield %>
     </div>
 
     <!-- Google Analytics -->
@@ -31,7 +35,7 @@
     </script>
 
     <!-- Facebook SDK -->
-    <script>
+    <!-- <script>
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '1531552330445888',
@@ -47,7 +51,7 @@
          js.src = "//connect.facebook.net/en_US/sdk.js";
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
-    </script>
+    </script> -->
 
   </body>
 </html>
