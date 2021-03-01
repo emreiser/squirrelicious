@@ -54,6 +54,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :imageurl, :ingredientlist, :yummlyid)
+    params.require(:recipe).permit(:title, :imageurl, :ingredientlist, :yummlyid, :url)
   end
 end
