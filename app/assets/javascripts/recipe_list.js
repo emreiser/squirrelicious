@@ -48,17 +48,11 @@ Squirrelicious.renderAllRecipes = function(recipes, meat) {
        favorite_array.push(data[j].yummlyid);
     }
 
-    if (recipes.length === 0) {
-      $container_div.text("");
-      $container_div.append('<h1>Sorry, your search did not return any recipes</h1>');
-      $basket_button = $('<button class="btn btn-lg btn-warning">Modify your search</button>');
-      $container_div.append($basket_button);
-      $basket_button.click(function(event) {
-        event.preventDefault();
-        Squirrelicious.getIngredients();
-        return false;
-      });
+    if (recipes == undefined || recipes.length === 0) {
+      $recipe_container.empty()
+      $recipe_container.append('<div class="center"><br><br><h4>Sorry, your search did not return any recipes</h4></div>');
     } else {
+      $recipe_container.empty();
       var l = recipes.length, i = 0;
       for(; i < l; i++) {
         recipes[i].recipe.id = recipes[i].recipe.uri.split("_")[1];
