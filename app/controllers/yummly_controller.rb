@@ -5,7 +5,7 @@ class YummlyController < ApplicationController
     ingredients = params[:ingredients]
     ingredients.gsub!(' ', '+')
 
-    edamam_url = "https://api.edamam.com/search?q=#{ingredients}&app_id=#{app_id}&app_key=#{app_key}"
+    edamam_url = "https://api.edamam.com/search?q=#{ingredients}&app_id=#{app_id}&app_key=#{app_key}&from=0&to=27"
 
     @response = HTTParty.get(edamam_url)
 
