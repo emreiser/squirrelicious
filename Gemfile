@@ -11,7 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'devise'
-gem 'httparty', '~> 0.15.7'
+gem 'httparty', '~> 0.21.0'
 gem 'handlebars_assets'
 
 group :doc do
